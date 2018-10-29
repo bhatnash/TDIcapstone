@@ -3,11 +3,11 @@ indx <- sapply(x, is.numeric)
 x[indx] <- lapply(x[indx], scale)
 x[,indx] <- impute(x[,indx],what="mean")
 
-fit <- svm(x,y, cost=10000, gamma = 0.19, kernel="radial", type="C-classification",na.action = na.omit)
+fit <- svm(x,y, cost=100, gamma = 0.19, kernel="radial", type="C-classification",na.action = na.omit)
 
 t <- read.table("crossValidationSet.txt", header=TRUE, sep="\t")
 
-tlabels <- read.table("~/Dropbox/Cardiomyopathy/ClinVarExtendedLists/testLabels.txt", header=FALSE, sep="\t")
+tlabels <- read.table("testLabels.txt", header=FALSE, sep="\t")
 t[indx] <- lapply(t[indx], scale)
 t[indx] <- impute(t[,indx],what="mean")
 
